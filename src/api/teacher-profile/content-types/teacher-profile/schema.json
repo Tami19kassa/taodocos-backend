@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "teacher_profiles",
+  "info": {
+    "singularName": "teacher-profile",
+    "pluralName": "teacher-profiles",
+    "displayName": "TeacherProfile"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "blocks"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
