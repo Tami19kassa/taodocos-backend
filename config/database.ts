@@ -1,7 +1,6 @@
-const path = require('path');
+import path from 'path';
 
-module.exports = ({ env }) => {
-  // Check if we are running on Render (Production)
+export default ({ env }) => {
   const client = env('DATABASE_CLIENT', 'sqlite');
 
   if (client === 'postgres') {
@@ -22,7 +21,6 @@ module.exports = ({ env }) => {
     };
   }
 
-  // Default to SQLite (For Local Development)
   return {
     connection: {
       client: 'sqlite',
