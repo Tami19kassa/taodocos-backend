@@ -430,6 +430,38 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAudioTrackAudioTrack extends Struct.CollectionTypeSchema {
+  collectionName: 'audio_tracks';
+  info: {
+    displayName: 'AudioTrack';
+    pluralName: 'audio-tracks';
+    singularName: 'audio-track';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    audio_file: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    cover_art: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::audio-track.audio-track'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBookBook extends Struct.CollectionTypeSchema {
   collectionName: 'books';
   info: {
@@ -1228,6 +1260,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::audio-track.audio-track': ApiAudioTrackAudioTrack;
       'api::book.book': ApiBookBook;
       'api::comment.comment': ApiCommentComment;
       'api::footer.footer': ApiFooterFooter;
