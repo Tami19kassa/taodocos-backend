@@ -36,6 +36,12 @@
       "relation": "manyToOne",
       "target": "api::comment.comment",
       "inversedBy": "replies"
+    },
+    "liked_by": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "comments"
     }
   }
 }
