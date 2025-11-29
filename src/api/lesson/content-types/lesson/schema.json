@@ -28,6 +28,16 @@
       "relation": "manyToOne",
       "target": "api::level.level",
       "inversedBy": "lessons"
+    },
+    "is_free_sample": {
+      "type": "boolean",
+      "default": false
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "lesson"
     }
   }
 }
