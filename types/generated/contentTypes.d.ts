@@ -688,6 +688,37 @@ export interface ApiPromotionPromotion extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSiteThemeSiteTheme extends Struct.SingleTypeSchema {
+  collectionName: 'site_themes';
+  info: {
+    displayName: 'SiteTheme';
+    pluralName: 'site-themes';
+    singularName: 'site-theme';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    global_background: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::site-theme.site-theme'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTeacherProfileTeacherProfile
   extends Struct.SingleTypeSchema {
   collectionName: 'teacher_profiles';
@@ -1268,6 +1299,7 @@ declare module '@strapi/strapi' {
       'api::lesson.lesson': ApiLessonLesson;
       'api::level.level': ApiLevelLevel;
       'api::promotion.promotion': ApiPromotionPromotion;
+      'api::site-theme.site-theme': ApiSiteThemeSiteTheme;
       'api::teacher-profile.teacher-profile': ApiTeacherProfileTeacherProfile;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'plugin::content-releases.release': PluginContentReleasesRelease;

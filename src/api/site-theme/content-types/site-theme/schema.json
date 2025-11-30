@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_themes",
+  "info": {
+    "singularName": "site-theme",
+    "pluralName": "site-themes",
+    "displayName": "SiteTheme"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "global_background": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
