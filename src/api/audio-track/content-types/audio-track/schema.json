@@ -33,6 +33,11 @@
         "videos",
         "audios"
       ]
+    },
+    "audio_folder": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::audio-folder.audio-folder"
     }
   }
 }

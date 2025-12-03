@@ -477,6 +477,10 @@ export interface ApiAudioTrackAudioTrack extends Struct.CollectionTypeSchema {
     audio_file: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    audio_folder: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::audio-folder.audio-folder'
+    >;
     cover_art: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
