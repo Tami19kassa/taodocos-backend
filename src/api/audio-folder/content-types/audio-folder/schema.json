@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "audio_folders",
+  "info": {
+    "singularName": "audio-folder",
+    "pluralName": "audio-folders",
+    "displayName": "AudioFolder"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "audio_tracks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::audio-track.audio-track"
+    }
+  }
+}

@@ -430,6 +430,39 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAudioFolderAudioFolder extends Struct.CollectionTypeSchema {
+  collectionName: 'audio_folders';
+  info: {
+    displayName: 'AudioFolder';
+    pluralName: 'audio-folders';
+    singularName: 'audio-folder';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    audio_tracks: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::audio-track.audio-track'
+    >;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::audio-folder.audio-folder'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAudioTrackAudioTrack extends Struct.CollectionTypeSchema {
   collectionName: 'audio_tracks';
   info: {
@@ -1290,6 +1323,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::audio-folder.audio-folder': ApiAudioFolderAudioFolder;
       'api::audio-track.audio-track': ApiAudioTrackAudioTrack;
       'api::book.book': ApiBookBook;
       'api::comment.comment': ApiCommentComment;
