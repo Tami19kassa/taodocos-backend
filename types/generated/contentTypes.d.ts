@@ -755,6 +755,43 @@ export interface ApiSiteThemeSiteTheme extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiStudentPerformanceStudentPerformance
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'student_performances';
+  info: {
+    displayName: 'StudentPerformance';
+    pluralName: 'student-performances';
+    singularName: 'student-performance';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::student-performance.student-performance'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    student_name: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<['video', 'image']>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    youtube_id: Schema.Attribute.String;
+  };
+}
+
 export interface ApiTeacherProfileTeacherProfile
   extends Struct.SingleTypeSchema {
   collectionName: 'teacher_profiles';
@@ -1337,6 +1374,7 @@ declare module '@strapi/strapi' {
       'api::level.level': ApiLevelLevel;
       'api::promotion.promotion': ApiPromotionPromotion;
       'api::site-theme.site-theme': ApiSiteThemeSiteTheme;
+      'api::student-performance.student-performance': ApiStudentPerformanceStudentPerformance;
       'api::teacher-profile.teacher-profile': ApiTeacherProfileTeacherProfile;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "student_performances",
+  "info": {
+    "singularName": "student-performance",
+    "pluralName": "student-performances",
+    "displayName": "StudentPerformance"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "student_name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "video",
+        "image"
+      ]
+    },
+    "youtube_id": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
