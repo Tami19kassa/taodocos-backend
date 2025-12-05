@@ -25,6 +25,18 @@
     },
     "copyright_text": {
       "type": "string"
+    },
+    "bank_name": {
+      "type": "string"
+    },
+    "account_number": {
+      "type": "string"
+    },
+    "account_name": {
+      "type": "string"
+    },
+    "payment_instruction": {
+      "type": "text"
     }
   }
 }

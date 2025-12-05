@@ -579,6 +579,9 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   };
   attributes: {
     about_short: Schema.Attribute.String;
+    account_name: Schema.Attribute.String;
+    account_number: Schema.Attribute.String;
+    bank_name: Schema.Attribute.String;
     contact_email: Schema.Attribute.Email;
     contact_phone: Schema.Attribute.String;
     copyright_text: Schema.Attribute.String;
@@ -591,6 +594,7 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
       'api::footer.footer'
     > &
       Schema.Attribute.Private;
+    payment_instruction: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
     telegram_link: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
