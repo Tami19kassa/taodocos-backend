@@ -35,6 +35,9 @@
       "relation": "oneToMany",
       "target": "api::lesson.lesson",
       "mappedBy": "level"
+    },
+    "rank": {
+      "type": "integer"
     }
   }
 }
