@@ -700,6 +700,38 @@ export interface ApiLevelLevel extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPaymentMethodPaymentMethod
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'payment_methods';
+  info: {
+    displayName: 'PaymentMethod';
+    pluralName: 'payment-methods';
+    singularName: 'payment-method';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    account_number: Schema.Attribute.String;
+    bank_name: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    instruction: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::payment-method.payment-method'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPromotionPromotion extends Struct.CollectionTypeSchema {
   collectionName: 'promotions';
   info: {
@@ -1377,6 +1409,7 @@ declare module '@strapi/strapi' {
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::lesson.lesson': ApiLessonLesson;
       'api::level.level': ApiLevelLevel;
+      'api::payment-method.payment-method': ApiPaymentMethodPaymentMethod;
       'api::promotion.promotion': ApiPromotionPromotion;
       'api::site-theme.site-theme': ApiSiteThemeSiteTheme;
       'api::student-performance.student-performance': ApiStudentPerformanceStudentPerformance;
