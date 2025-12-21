@@ -1,4 +1,4 @@
-module.exports = ({ env }) => ({
+export default ({ env }) => ({
   upload: {
     config: {
       provider: 'cloudinary',
@@ -8,8 +8,15 @@ module.exports = ({ env }) => ({
         api_secret: env('CLOUDINARY_SECRET'),
       },
       actionOptions: {
-        upload: {},
-        uploadStream: {},
+        upload: {
+          // FORCE PUBLIC ACCESS
+          access_mode: 'public',
+          resource_type: 'auto',
+        },
+        uploadStream: {
+          access_mode: 'public',
+          resource_type: 'auto',
+        },
         delete: {},
       },
     },
