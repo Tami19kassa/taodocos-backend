@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "live_classes",
+  "info": {
+    "singularName": "live-class",
+    "pluralName": "live-classes",
+    "displayName": "LiveClass"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "start_time": {
+      "type": "datetime"
+    },
+    "meet_link": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

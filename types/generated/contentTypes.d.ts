@@ -700,6 +700,39 @@ export interface ApiLevelLevel extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLiveClassLiveClass extends Struct.CollectionTypeSchema {
+  collectionName: 'live_classes';
+  info: {
+    displayName: 'LiveClass';
+    pluralName: 'live-classes';
+    singularName: 'live-class';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::live-class.live-class'
+    > &
+      Schema.Attribute.Private;
+    meet_link: Schema.Attribute.String;
+    price: Schema.Attribute.Decimal;
+    publishedAt: Schema.Attribute.DateTime;
+    start_time: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPaymentMethodPaymentMethod
   extends Struct.CollectionTypeSchema {
   collectionName: 'payment_methods';
@@ -1409,6 +1442,7 @@ declare module '@strapi/strapi' {
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::lesson.lesson': ApiLessonLesson;
       'api::level.level': ApiLevelLevel;
+      'api::live-class.live-class': ApiLiveClassLiveClass;
       'api::payment-method.payment-method': ApiPaymentMethodPaymentMethod;
       'api::promotion.promotion': ApiPromotionPromotion;
       'api::site-theme.site-theme': ApiSiteThemeSiteTheme;
