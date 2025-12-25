@@ -1392,6 +1392,10 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    live_classes: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::live-class.live-class'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

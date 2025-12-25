@@ -76,6 +76,11 @@
       "relation": "manyToMany",
       "target": "api::comment.comment",
       "inversedBy": "liked_by"
+    },
+    "live_classes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::live-class.live-class"
     }
   }
 }
